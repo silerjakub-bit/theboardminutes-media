@@ -1,0 +1,147 @@
+<title>The Board Minutes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --ground:     #e6ebe4;
+  --stock:      #eef2ec;
+  --rule:       #b9c6bc;
+  --rule-faint: #d2dbd2;
+  --ink:        #1b211c;
+  --muted:      #6a7569;
+  --accent:     #8e2b20;
+  --chip:       #dbe3da;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #12170f; --stock: #182016; --rule: #313d31; --rule-faint: #242e24;
+    --ink: #e7ece5; --muted: #8c9a8b; --accent: #d1685a; --chip: #212b20;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #12170f; --stock: #182016; --rule: #313d31; --rule-faint: #242e24;
+  --ink: #e7ece5; --muted: #8c9a8b; --accent: #d1685a; --chip: #212b20;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding-block: clamp(2.5rem, 7vw, 5rem); padding-left: 20px; padding-right: 20px;
+  background: var(--ground); color: var(--ink);
+  font-family: Spectral, Georgia, "Times New Roman", serif;
+  font-size: 17px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.sheet { max-width: 68rem; margin: 0 auto; }
+
+.masthead { display: flex; flex-direction: column; gap: .5rem; }
+.masthead h1 {
+  margin: 0; font-size: clamp(2.6rem, 9vw, 4.4rem); font-weight: 800;
+  letter-spacing: -.02em; line-height: .95; text-wrap: balance;
+}
+.vol {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+}
+.premise {
+  margin: 1.4rem 0 0; max-width: 34em; font-size: 1.12rem; color: var(--ink);
+}
+.rule-accent { height: 4px; background: var(--accent); margin: 1.8rem 0 0; }
+
+.tally {
+  display: flex; flex-wrap: wrap; gap: 0 2.5rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: .76rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); padding: .9rem 0 0;
+}
+.tally b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.register { margin-top: 2.6rem; border-top: 1px solid var(--rule); }
+.entry {
+  display: grid; gap: .35rem 1.5rem; padding: 1.35rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+  grid-template-columns: 5.5rem 11rem 1fr auto;
+  grid-template-areas: "no date company status" ".  .   motion  motion";
+  align-items: baseline;
+}
+.no, .date {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--muted);
+}
+.no { grid-area: no; color: var(--accent); font-weight: 600; }
+.date { grid-area: date; }
+.company {
+  grid-area: company; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; font-size: .95rem;
+}
+.status {
+  grid-area: status; justify-self: end;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent); border: 1.5px solid var(--accent);
+  padding: .2rem .5rem; border-radius: 2px; white-space: nowrap;
+}
+.motion { grid-area: motion; max-width: 46em; }
+.motion a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+.motion a:hover { text-decoration-color: var(--accent); }
+.motion a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.empty { padding: 3rem 0; color: var(--muted); }
+
+.colophon {
+  margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--rule);
+  display: grid; gap: 1rem; max-width: 42em;
+  font-size: .88rem; color: var(--muted);
+}
+.colophon strong { color: var(--ink); }
+
+.preview {
+  margin-top: 1.8rem; padding: .85rem 1.1rem; background: var(--chip);
+  border-left: 4px solid var(--accent); font-size: .9rem;
+}
+
+@media (max-width: 640px) {
+  .entry {
+    grid-template-columns: 4.5rem 1fr;
+    grid-template-areas: "no company" "date status" "motion motion";
+    gap: .3rem 1rem;
+  }
+  .status { justify-self: start; }
+  .motion { margin-top: .4rem; }
+}
+</style>
+
+<div class="sheet">
+  <header class="masthead">
+    <div class="vol">Minute Book &middot; Vol. I &middot; @theboardminutes</div>
+    <h1>The Board Minutes</h1>
+    <p class="premise">Every day, the board of one real company formally adopts one historical decision. Minutes are published. Meeting numbers never reset.</p>
+    <div class="rule-accent"></div>
+    <div class="tally">
+      <span>Meetings recorded <b>1</b></span>
+      <span>Companies minuted <b>1</b></span>
+      <span>Motions defeated <b>0</b></span>
+      <span>Sitting since <b>2026-09-16</b></span>
+    </div>
+  </header>
+
+  <main class="register">
+      <div class="entry">
+        <div class="no">#1</div>
+        <div class="date">16 SEP 2026</div>
+        <div class="company">Bridgestone</div>
+        <div class="status">Nem. con.</div>
+        <div class="motion"><a href="https://silerjakub-bit.github.io/theboardminutes-media/2026-09-16/board-of-directors/post_tiktok.mp4" rel="noopener">The board of Bridgestone has voted to cross the river it was told not to cross.</a></div>
+      </div>
+  </main>
+
+  <footer class="colophon">
+    <p><strong>Parody.</strong> Not affiliated with, endorsed by, or speaking for
+    any company named here. No company named here has said, done, approved or
+    decided anything recorded on this page. Every motion is obviously fictional.</p>
+    <p>Each entry pairs a company with a documented historical decision. The
+    decisions are real and described, never quoted. The meetings are not.</p>
+    <p>Minutes are taken daily and are never amended. A motion, once carried,
+    stands.</p>
+  </footer>
+</div>
